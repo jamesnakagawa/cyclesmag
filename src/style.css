@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    font-family: 'Poppins';
+    background: #00050a;
+}
+
+.container.cycles {
+}
+
+.container.ball {
+    width: 30vw;
+    margin-left: -60vw;
+}
+.container.fear {
+    width: 70vw;
+    background-color: rgba(180,0,0,0.9);
+    padding: 3em;
+}
+.container.fear .blend {
+    font-family: Michroma, Helvetica, sans-serif;
+    font-size: 3em;
+}
+.container.fear .para {
+    font-family: monospace;
+}
+
+.red.boi {
+    width: 10em;
+    height: 10em;
+    background-color: #f00;
+    left: 150vh;
+    top: 30vh;
+    position: absolute;
+}
+
+.intro > .text-wrapper {
+    width: 400px;
+    position: relative;
+}
+
+h1 {
+    font-size: 15rem;
+    color: rgb(114, 0, 0);
+    margin-bottom: 0px;
+    margin-top: 5px;
+    text-align: left;
+    position: absolute; 
+}
+
+.spiral {
+    position: absolute;
+    left: calc(90vw - 500px);
+    top: calc(50vh - 250px);
+}
+
+.blend {
+    mix-blend-mode: difference;
+}
+
+.text-wrapper.center {
+    bottom:40vh;
+}
+
+.text-wrapper.topLeft {
+    left: 10vw;
+    top: 10vh;
+    max-width: 400px;
+    bottom: auto;
+}
+.text-wrapper.topLeft2 {
+    left: 10vw;
+    top: 25vh;
+    max-width: 400px;
+    bottom: auto;
+}
+.text-wrapper.bottomRight {
+    left: auto;
+    top: auto;
+    bottom: 10vh;
+    right: 10vw;
+    max-width: 400px;
+}
+
+.flex {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: absolute;
+    top: 10%;
+}
+.dark-panel {
+    width: 30vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    padding: 30px;
+
+}
+img {
+    display:block;
+    margin: 20px;
+    box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.26);
+    -moz-box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.13);
+}
+
+h1.accent {
+    font-size: 130px;
+    line-height: 110px;
+    color: rgba(184, 54, 54, 0.527);
+    text-transform: uppercase;
+    font-family: Michroma, Helvetica, sans-serif;
+}
+
+h4 {
+    font-size: 60px;
+    color: rgb(207, 207, 207);
+}
+
+h5 {
+    font-size: 30px;
+    font-family: helvetica;
+    color: rgb(207, 207, 207);
+}
+
+h6.light {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(255, 255, 255);
+}
+
+p {
+    color: rgb(44, 44, 44);
+    font-size: 13px;
+    font-family: monospace;
+    font-weight:400;
+    line-height: 1.4em;
+}
+
+div {
+    box-sizing: border-box;
+}
+.column {
+    width: 35vw;
+    position: absolute;
+    right: 10vw;
+    top: 50vh;
+
+}
+.corner {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+.text-wrapper {
+    position: absolute;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    left: 30vw;
+    right: 30vw;
+    bottom: 10vh;
+    background-color: ghostwhite;
+    border: #0e0808, 1px;
+    box-shadow: 5px 5px;
+}
+.text-wrapper.long {
+    width: 100vw;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0px;
+}
+.horizontal-div {
+    background-image: url('./grid-02.png');
+    background-repeat: repeat;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 10000px;
+    position: fixed;
+    display: flex;
+}
+.section {
+    width: 100vw;
+    position: relative;
+}
+
+p.light {
+    color: rgb(175, 175, 175);
+    font-family: monospace;
+    font-weight: 200;
+}
+
+.header-wrapper {
+    position: relative;
+    padding-top: 20px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    outline: 0px solid #0f0;
+}
+
+.scrolluptext {
+    opacity: 100%;
+    z-index: 100;
+    position:absolute;
+    top: 50vh;
+    left: 85vw;
+    opacity: 0%;
+}
+
+.webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    mix-blend-mode:difference;
+}
+
