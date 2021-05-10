@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 export function cylinder(width, height) {
     const scene2 = new THREE.Scene();
-    const camera2 = new THREE.PerspectiveCamera(35, width / height, 0.1, 1000);
+    const camera2 = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
     const renderer2 = new THREE.WebGLRenderer();
     renderer2.setSize(width, height);
