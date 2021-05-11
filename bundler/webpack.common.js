@@ -57,6 +57,17 @@ module.exports = {
                 ]
             },
 
+            // SASS
+            {
+                test: /\.s[ac]ss$/,
+                use:
+                [
+                    MiniCSSExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+
             // Images
             {
                 test: /\.(jpg|png|gif|svg)$/,

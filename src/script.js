@@ -1,5 +1,6 @@
 import LocomotiveScroll from 'locomotive-scroll';
-import './style.css';
+import './style.sass';
+import './locomotive.css';
 // import {cylinder} from  './cylinder';
 // import {initHorizontalScroll} from './scroll';
 // import {drawBall} from './ball';
@@ -9,15 +10,18 @@ import './style.css';
 
 document.body.classList.remove('preload');
 document.querySelector('.title').classList.add('active');
-
+const scrollContainer = document.querySelector('[data-scroll-container]');
+console.log(scrollContainer);
 const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
+    el: scrollContainer,
     smooth: true,
     direction: 'horizontal'
 });
 
 scroll.init();
-// setInterval(() => scroll.update(), 2000);
+// console.log('yes');
+
+setTimeout(() => scroll.update(), 2000);
 
 // drawBall('canvas.webgl');
 // const spiral = cylinder(500, window.innerHeight).domElement;

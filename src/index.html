@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThreeJS Starter</title>
-    <link rel='stylesheet' href='style.css'/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 </head>
 <body class='preload'>
 
 <div class="horizontal-div" data-scroll-container>
-    <div class="container cycles" data-scroll data-scroll-speed='1'>
-
-        <h1 class='title boxed bold'>
+    <div class="container cycles" data-scroll-section>
+        <h1 class='title boxed bold' data-scroll>
             <span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>Y</span></span><span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>L</span></span><span class='let'><span class='inner'>E</span></span><span class='let'><span class='inner'>S</span></span>
         </h1>
 
@@ -36,10 +36,7 @@
             scroll to continue &rarr;
         </div>
     </div>
-    <div class="red boi" data-scroll data-scroll-speed='4'>&nbsp;</div>
-    <div class="green boi" data-scroll data-scroll-speed='7'>&nbsp;</div>
-    <div class="blue boi" data-scroll data-scroll-speed='9'>&nbsp;</div>
-    <div class="slide2" data-scroll data-scroll-speed='3'>
+    <div class="slide2" data-scroll-section>
         <div class="text-wrapper topLeft">
             <p>In life we find ourselves challenged by those patterns,</p>
         </div>
@@ -48,17 +45,17 @@
         </div>
         <div id="noise"></div>
     </div>
-    <div class="section" data-scroll data-scroll-speed='1'>
+    <div class="section" data-scroll-section>
         <h1 class="fight-or-flee">
             Will you fight or flee from what you crave most?
         </h1>
+        <div class="container ball" data-scroll data-scroll-speed='8'>
+            <canvas class="webgl"></canvas>
+        </div>
     </div>
 
-    <div class="container ball" data-scroll data-scroll-speed='8'>
-        <canvas class="webgl"></canvas>
-    </div>
 
-    <div class='container fear' data-scroll data-scroll-speed='1'>
+    <div class='container fear' data-scroll-section>
         <h1 class="blend">FEAR.</h1>
         <div class="para">
             It isn't so much the presence of fear, as it is about its absence. You notice it - the peacefulness of a head void of anxieties. You start to wonder when it will be back, what you will do then.
@@ -103,6 +100,5 @@
     -->
 </div>
 
-    
 </body>
 </html>
