@@ -21,25 +21,17 @@ export function drawBall(selector) {
     // Objects
     const geometry = new THREE.SphereBufferGeometry( .5, 30,30 );
 
-
-
     // Materials
-
     const material = new THREE.MeshStandardMaterial() 
     material.metalness = 1
     material.normalMap = normalTexture;
     material.color = new THREE.Color(0xff0000)
 
-
-
     // Mesh
     const sphere = new THREE.Mesh(geometry,material)
     scene.add(sphere)
 
-
-
     // Lights
-
     const pointLight = new THREE.PointLight(0xffffff, 0.08)
     pointLight.position.x = 2
     pointLight.position.y = 3
@@ -95,15 +87,14 @@ export function drawBall(selector) {
      * Sizes
      */
     const sizes = {
-        width: 500,
-        height: 500
+        width: 300,
+        height: 300
     }
 
-    window.addEventListener('resize', () =>
-    {
+    window.addEventListener('resize', () => {
         // Update sizes
-        sizes.width = 500
-        sizes.height = 500
+        sizes.width = 300
+        sizes.height = 300
 
         // Update camera
         camera.aspect = sizes.width / sizes.height
@@ -121,7 +112,7 @@ export function drawBall(selector) {
     const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
     camera.position.x = 0
     camera.position.y = 0
-    camera.position.z = 2
+    camera.position.z =1
     scene.add(camera)
 
     // Controls

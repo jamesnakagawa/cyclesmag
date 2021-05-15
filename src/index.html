@@ -9,22 +9,18 @@
 </head>
 <body class='preload'>
 
-<div class="horizontal-div" data-scroll-container>
+<div class="horizontal-div" data-scroll-container data-horizontal="true">
     <div class="container cycles" data-scroll-section>
         <h1 class='title boxed bold' data-scroll>
             <span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>Y</span></span><span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>L</span></span><span class='let'><span class='inner'>E</span></span><span class='let'><span class='inner'>S</span></span>
         </h1>
-
-        <div class="clip-rect">
-            <img src="cycles-spiral.svg"/>
-        </div>
 
         <div class="intro boxed">
             <p>A <b>Cycle</b> is a succession through the dips, peaks, and valleys of the universe within and around us, knowing that we will return home once again.</p>
         </div>
 
         <div class="corner top left">
-            CYCLES
+            <a href="/" style="color: inherit">CYCLES</a>
         </div>
         <div class="corner top right">
             MIMP
@@ -36,6 +32,29 @@
             scroll to continue &rarr;
         </div>
     </div>
+
+    <div class="fixed-cont" data-scroll-section>
+        <div class="target-rect">
+            &nbsp;
+        </div>
+        <div class="clip-rect" data-scroll data-scroll-sticky data-scroll-target=".target-rect">
+            <img src="cycles-spiral.svg"/>
+        </div>
+        <div class="text-box" data-scroll data-scroll-sticky data-scroll-target=".target-rect">
+            <div class="inner">
+                <p>Voluptate harum architecto quidem modi. Neque beatae vel id ipsam explicabo aliquid. Expedita dicta qui accusamus aut aperiam.</p>
+
+                <p>Alias consequatur exercitationem temporibus. Consequuntur quos rerum officiis. Architecto iure alias minus vel.</p>
+
+                <p>Et quia eius omnis magnam fuga. Sint et eum qui non iure ad. Ea id eius voluptatum excepturi. Eligendi id nostrum sit et labore autem. Quos velit deleniti illo nesciunt sit nostrum. Error iusto veritatis accusantium quisquam ut vitae facilis.</p>
+
+                <p>Libero amet distinctio explicabo id sunt ab quo omnis. Repellendus blanditiis adipisci quidem. Sunt accusantium sed suscipit repudiandae dolorem deleniti magnam. Fuga aut autem consectetur rem aperiam minima. Est provident repudiandae et consequatur voluptatibus laudantium. Asperiores autem dolorum rerum perferendis omnis ut in suscipit.</p>
+
+                <p>Explicabo rerum cumque aut suscipit a ex. Sed qui aliquam perferendis et qui dolorum. Unde unde a temporibus praesentium est.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="slide2" data-scroll-section>
         <div class="text-wrapper topLeft">
             <p>In life we find ourselves challenged by those patterns,</p>
@@ -45,12 +64,20 @@
         </div>
         <div id="noise"></div>
     </div>
-    <div class="section" data-scroll-section>
-        <h1 class="fight-or-flee">
-            Will you fight or flee from what you crave most?
+
+    <!-- <div data-scroll-section style="width: 50vw">&nbsp;</div> -->
+
+    <div class="container ball" data-scroll-section>
+        <h1 class="fight-or-flee" data-scroll data-scroll-speed="5">
+            <div class='line'>Will you</div>
+            <div class='line'>fight or</div>
+            <div class='line'>flee from</div>
+            <div class='line'>what you</div>
+            <div class='line'>crave</div>
+            <div class="line">most?</div>
         </h1>
-        <div class="container ball" data-scroll data-scroll-speed='8'>
-            <canvas class="webgl"></canvas>
+        <div data-scroll data-scroll-speed='18' class="anim">
+            <canvas class="ball"></canvas>
         </div>
     </div>
 
@@ -68,8 +95,7 @@
         </div>
     </div> 
 
-<!--
-    <div class="container">
+    <div class="container poems" data-scroll-section>
         <div class="flex">
             <img src="https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s750x750/75394896_2310711769219128_719799933737000259_n.jpg?tp=1&_nc_ht=scontent-sea1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=DGKyqzexmcgAX9LLugR&edm=AP_V10EAAAAA&ccb=7-4&oh=c27d94a1f4c6c00b68f08e6971a9361c&oe=60949B32&_nc_sid=4f375e" alt="Poem by Alanah Lam" width="350" height="400">
             <img src="https://scontent-sea1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p750x750/73398058_556257091842495_1340729006632805630_n.jpg?tp=1&_nc_ht=scontent-sea1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=4wnIA2TBgTcAX9E-zF5&edm=AP_V10EAAAAA&ccb=7-4&oh=0850a27c5eb7e838933f501129c8b7a8&oe=6096C9B1&_nc_sid=4f375e" alt="Poem by Alanah Lam" width="350" height="400">
@@ -81,23 +107,23 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="text-wrapper" style="width: 400px; top:10px; right:10px; ">
+    <div class="container crutches" data-scroll-section>
+        <div class="text-wrapper">
             <p>I find myself reaching for the same crutches. Coping mechanisms that are more comfortable than they are effective. But again, I never seem to exit the pattern. Instead, I dissolve further. Deeper.</p>
         </div>
     </div>
-    <div class="container">
+
+    <div class="container curses" data-scroll-section>
         <div class="dark-panel">
             <h5>On Breaking Generational Curses</h5>
-            <p class="light">Love wasn't something I grew up expressing, processing, experiencing. For us, love was achievement, pride, over-protectiveness. Never just, 'love'. 
-                I didn't hug my mom until I made a conscious effort too when I was in my 20s. Even now, our hugs are awkwardly timed, awkwardly held. The only times we say I love 
-                you are in the brief liminal spaces at the end of phone calls, right before you know to hang up, but right when you could add something more.</p>
+            <p class="light">Love wasn't something I grew up expressing, processing, experiencing. For us, love was achievement, pride, over-protectiveness. Never just, 'love'.</p>
+            <p>I didn't hug my mom until I made a conscious effort to when I was in my 20s. Even now, our hugs are awkwardly timed, awkwardly held. The only times we say I love you are in the brief liminal spaces at the end of phone calls, right before you know to hang up, but right when you could add something more.</p>
         </div>
     </div>
-    <div class="container">
+    <div class="container box" data-scroll-section>
         <canvas class="box"></canvas>
     </div>
-    -->
+
 </div>
 
 </body>

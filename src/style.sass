@@ -18,8 +18,8 @@ h1
     top: 0px
     left: 0px
     height: 100vh
-    width: 10000px
-    display: flex
+    width: 820vw
+    // display: flex
 
 [data-scroll-section] *
     white-space: normal
@@ -38,6 +38,8 @@ h1
         color: #000
 
 .container.cycles
+    position: relative
+    z-index: 2
     .title
         font-size: 20pt
         position: absolute
@@ -72,24 +74,6 @@ h1
           transform: rotate(0deg) 
         100%
           transform: rotate(360deg) 
-    .clip-rect 
-        position: absolute
-        left: 50vw
-        top: 0
-        overflow: hidden
-        width: 100vw
-        height: 100vh
-        background: rgba(15, 15, 15, 0.85)
-        img 
-            opacity: 52.7%
-            position: absolute
-            left: 25vw
-            top: 50vh
-            margin-top: -65vh
-            margin-left: -65vw
-            width: 130vw
-            height: 130vh
-            animation: spin 120s linear infinite
     .intro 
         position: absolute
         top: 55vh
@@ -111,15 +95,106 @@ h1
         &.bottom 
             bottom: 1rem
 
-.slide2 > .text-wrapper 
-    width: 40vw
+.fixed-cont
+    position: absolute
+    z-index: 1
+    left: 50vw
+    width: 200vw
+    height: 100vh
+    // overflow: hidden
+    .target-rect
+        z-index: 5
+        position: absolute
+        left: 0
+        right: 0
+        height: 100vh
+    .clip-rect 
+        z-index: 4
+        position: absolute
+        left: 0
+        overflow: hidden
+        width: 100vw
+        height: 100vh
+        background: rgba(15, 15, 15, 0.85)
+        img 
+            opacity: 59%
+            position: absolute
+            left: 25vw
+            top: 50vh
+            margin-top: -65vh
+            margin-left: -65vw
+            width: 130vw
+            height: 130vh
+            animation: spin 120s linear infinite
+    .text-box
+        z-index: 4
+        position: absolute
+        left: 0
+        top: 10vh
+        width: 100vw
+        .inner
+            position: absolute
+            left: calc(67vw - 15vh)
+            width: 35vw
+            height: 80vh
+            opacity: 0
+            background: rgba(20, 42, 150, 0.88)
+            border: 15px solid rgb(20, 42, 150)
+            box-sizing: border-box
+            padding: 2rem
+            color: rgba(255,255,255,0.9)
+            transition: opacity 1.5s ease-in-out
+            p
+                margin-bottom: 0.6rem
+        &.is-inview .inner
+            opacity: 1
+
+.slide2
     position: relative
+    z-index: 2
+    width: 100vw
+    left: 100vw
+    & > .text-wrapper 
+        width: 40vw
+        position: relative
 
 .container.ball 
-    width: 30vw
-    margin-left: -60vw
+    position: relative
+    z-index: 2
+    width: 100vw
+    margin-left: 50vw
+    left: 10vw
+    .fight-or-flee 
+        position: absolute
+        font-family: Michroma, Helvetica, sans-serif
+        margin-bottom: 0px
+        margin-top: 5px
+        text-align: left
+        font-size: 130px
+        line-height: 110px
+        color: rgba(184, 54, 54, 0.527)
+        text-transform: uppercase
+        .line
+            opacity: 0
+            transform-origin: center top
+            transform-style: preserve-3d
+            transform: translateY(100%) rotateX(-80deg)
+            transition: opacity 0s cubic-bezier(.215,.61,.355,1), transform 0s cubic-bezier(.215,.61,.355,1)
+        &.is-inview .line
+            transform: none
+            opacity: 1
+            transition-duration: .8s
+            @for $i from 1 through 6
+                &:nth-child(#{$i})
+                    transition-delay: $i * .3s
+    .anim
+        position: absolute
+        mix-blend-mode: screen
+        left: 40vw
+        top: 20vh
 
 .container.fear 
+    position: relative
     width: 70vw
     background-color: rgba(180,0,0,0.9)
     padding: 3em
@@ -133,15 +208,30 @@ h1
         margin: 2em 0
         max-width: 40em
 
-.fight-or-flee 
-    font-family: Michroma, Helvetica, sans-serif
-    margin-bottom: 0px
-    margin-top: 5px
-    text-align: left
-    font-size: 130px
-    line-height: 110px
-    color: rgba(184, 54, 54, 0.527)
-    text-transform: uppercase
+.container.poems
+    position: relative
+    .text-wrapper
+        left: 15vw
+        right: 15vw
+    .flex 
+        img
+            background: #911
+        display: flex
+        flex-wrap: nowrap
+        justify-content: space-evenly
+        position: relative
+        top: 10vh
+
+.container.crutches
+    width: 50vw
+    .text-wrapper
+        width: 100%
+
+.container.curses
+    left: 50vw
+
+.container.box
+    left: 20vw
 
 .blend 
     mix-blend-mode: difference
@@ -167,14 +257,6 @@ h1
     bottom: 10vh
     right: 10vw
     max-width: 400px
-
-.flex 
-    display: flex
-    flex-direction: row
-    flex-wrap: nowrap
-    justify-content: space-between
-    position: absolute
-    top: 10%
 
 .dark-panel 
     width: 30vw
@@ -230,11 +312,6 @@ div
     background-color: ghostwhite
     border: #0e0808, 1px
     box-shadow: 5px 5px
-    &.long 
-        width: 100vw
-        box-sizing: border-box
-        position: absolute
-        left: 0px
 
 .section 
     width: 100vw
