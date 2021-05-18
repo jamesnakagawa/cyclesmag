@@ -2,6 +2,8 @@
     margin: 0
     padding: 0
 
+$cub-bez: cubic-bezier(.215,.61,.355,1)
+
 html, body 
     height: 100vh
     background: #00050a
@@ -30,7 +32,7 @@ h1
     cursor: default
     background: rgba(255,255,255,0)
     color: #fff
-    transition: background 0.4s ease-in-out, color 0.5s ease-in-out
+    transition: background 0.4s $cub-bez, color 0.5s $cub-bez
     &.bold 
         border-width: 4px
     &:hover 
@@ -57,18 +59,9 @@ h1
             transition: transform 0.4s ease-in-out
     .title.is-inview .let .inner 
         transform: translateY(-150%)
-    .let:nth-child(1) .inner
-        transition-delay: 0.5s 
-    .let:nth-child(2) .inner
-        transition-delay: 0.6s 
-    .let:nth-child(3) .inner
-        transition-delay: 0.7s 
-    .let:nth-child(4) .inner
-        transition-delay: 0.8s 
-    .let:nth-child(5) .inner
-        transition-delay: 0.9s 
-    .let:nth-child(6) .inner
-        transition-delay: 1.0s 
+    @for $i from 1 through 6
+        .let:nth-child(#{$i}) .inner
+            transition-delay: 0.4s + 0.1s * $i
     @keyframes spin 
         0% 
           transform: rotate(0deg) 
@@ -138,12 +131,7 @@ h1
             width: 35vw
             height: 80vh
             opacity: 0
-            background: rgba(20, 42, 150, 0.88)
-            border: 15px solid rgb(20, 42, 150)
-            box-sizing: border-box
-            padding: 2rem
-            color: rgba(255,255,255,0.9)
-            transition: opacity 1.5s ease-in-out
+            transition: opacity 1.5s $cub-bez
             p
                 margin-bottom: 0.6rem
         &.is-inview .inner
@@ -179,7 +167,7 @@ h1
             transform-origin: center top
             transform-style: preserve-3d
             transform: translateY(100%) rotateX(-80deg)
-            transition: opacity 0s cubic-bezier(.215,.61,.355,1), transform 0s cubic-bezier(.215,.61,.355,1)
+            transition: opacity 0s $cub-bez, transform 0s $cub-bez
         &.is-inview .line
             transform: none
             opacity: 1
@@ -210,22 +198,30 @@ h1
 
 .container.poems
     position: relative
+    display: inline-flex !important
+    align-items: center
+    justify-content: center
+    .poem1
+        position: static
+        width: 60vw
+        p:not(:first-child)
+            margin-top: 0.75rem
+
+.container.deeper
+    display: inline-flex !important
+    align-items: center
+    justify-content: center
     .text-wrapper
-        left: 15vw
-        right: 15vw
-    .flex 
-        img
-            background: #911
-        display: flex
-        flex-wrap: nowrap
-        justify-content: space-evenly
-        position: relative
-        top: 10vh
+        position: static
+        width: 50vw
 
 .container.crutches
-    width: 50vw
+    display: inline-flex !important
+    align-items: center
+    justify-content: center
     .text-wrapper
-        width: 100%
+        position: static
+        width: 50vw
 
 .container.curses
     left: 50vw
@@ -236,59 +232,60 @@ h1
 .blend 
     mix-blend-mode: difference
 
-.text-wrapper.center 
-    bottom:40vh
+.blue-box
+    background: rgba(20, 42, 150, 0.58)
+    color: rgba(255,255,255,0.9)
+    border: 15px solid rgb(20, 42, 150)
+    box-sizing: border-box
+    padding: 2rem
+    &.bright
+        background: rgba(20, 42, 150, 0.88)
 
-.text-wrapper.topLeft 
-    left: 10vw
-    top: 10vh
-    max-width: 400px
-    bottom: auto
-
-.text-wrapper.topLeft2 
-    left: 10vw
-    top: 25vh
-    max-width: 400px
-    bottom: auto
-
-.text-wrapper.bottomRight 
-    left: auto
-    top: auto
-    bottom: 10vh
-    right: 10vw
-    max-width: 400px
+.text-wrapper
+    position: absolute
+    padding: 1.5rem 1rem
+    box-sizing: border-box
+    background-color: ghostwhite
+    border: #0e0808 1px solid
+    box-shadow: 5px 5px
+    &.default
+        left: 30vw
+        right: 30vw
+        bottom: 10vh
+    &.center
+        bottom: 40vh
+    &.topLeft
+        left: 10vw
+        top: 10vh
+        max-width: 400px
+    .topLeft2
+        left: 10vw
+        top: 25vh
+        max-width: 400px
+    .bottomRight
+        bottom: 10vh
+        right: 10vw
+        max-width: 400px
 
 .dark-panel 
     width: 30vw
     height: 100vh
-    background-color: rgb(0, 0, 0)
+    background-color: black
     padding: 30px
 
 img 
     display: block
     margin: 20px
-    box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.26)
-    -webkit-box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.26)
-    -moz-box-shadow: 5px 4px 40px 0px rgba(0,0,0,0.13)
-
-h4 
-    font-size: 60px
-    color: rgb(207, 207, 207)
+    box-shadow: 5px 4px 40px 0 rgba(0,0,0,0.26)
 
 h5 
     font-size: 30px
-    font-family: helvetica
     color: rgb(207, 207, 207)
-
-h6.light 
-    font-size: 12px
-    font-family: Arial, Helvetica, sans-serif
-    color: rgb(255, 255, 255)
 
 p 
     font-size: 13px
     font-family: monospace
-    font-weight:400
+    font-weight: normal
     line-height: 1.4em
 
 div 
@@ -299,19 +296,6 @@ div
     position: absolute
     right: 10vw
     top: 50vh
-
-.text-wrapper 
-    position: absolute
-    padding: 10px
-    padding-left: 20px
-    padding-right: 20px
-    box-sizing: border-box
-    left: 30vw
-    right: 30vw
-    bottom: 10vh
-    background-color: ghostwhite
-    border: #0e0808, 1px
-    box-shadow: 5px 5px
 
 .section 
     width: 100vw
@@ -331,18 +315,3 @@ p.light
     height: 100vh
     position: relative
     outline: 0px solid #0f0
-
-.scrolluptext 
-    opacity: 100%
-    z-index: 100
-    position: absolute
-    top: 50vh
-    left: 85vw
-    opacity: 0%
-
-.webgl 
-    position: absolute
-    top: 0
-    left: 0
-    outline: none
-    mix-blend-mode: difference
