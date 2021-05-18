@@ -10,14 +10,13 @@ import {makeNoise} from './noise';
 document.body.classList.remove('preload');
 document.querySelector('.title').classList.add('active');
 
-new LocomotiveScroll({
+window.scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     lerp: 0.7,
     direction: 'horizontal'
-}).init();
-
-// setTimeout(() => scroll.update(), 100);
+});
+window.scroll.init();
 
 drawBall('canvas.ball');
 drawCube('canvas.box');
