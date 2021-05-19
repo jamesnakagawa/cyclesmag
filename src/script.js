@@ -38,6 +38,51 @@ scroll.on('call', function(event_name, direction, obj) {
         })();
         obj.el
     }
-})
+});
+
+let symbols = document.querySelector('.container.symbols');
+
+let allSymbols = Array.from(symbols.querySelectorAll('.symbol'))
+
+let increment = Math.PI * 2 / allSymbols.length;
+const radius = 25;
+let stepSize = Math.PI / 1440;
+let startPos = 0;
+function spin() {
+    allSymbols.forEach((sym, i) => {
+        let angle = i * increment + startPos;
+        let y = Math.sin(angle) * radius;
+        let x = Math.cos(angle) * radius;
+        sym.style.transform = `translate(${x}vmin, ${y}vmin)`;
+    });
+    startPos += stepSize;
+    requestAnimationFrame(spin);
+}
+spin();
+
+allSymbols.forEach((sym, i) => {
+    sym.addEventListener('mouseenter', function() {
+        stepSize = 0;
+    })
+    sym.addEventListener('mouseleave', function() {
+        stepSize = Math.PI / 1440;
+    })
+});
+
+function adjustPopupHeight(popup) {
+    let id = popup.dataset.id;
+    let height = popup.querySelector('.text-wrapper')
+        .getBoundingClientRect().height
+    let element = document.createElement('style');
+    document.head.appendChild(element);
+    element.sheet.insertRule(`
+        .container.symbols .${id}:hover .popup-box {
+            top: -${height / 2}px;
+            max-height: ${height}px;
+        }
+    `);
+}
+document.querySelectorAll('.popup-box')
+        .forEach(adjustPopupHeight);
 
 //initText();

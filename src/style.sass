@@ -175,26 +175,62 @@ h1
             @for $i from 1 through 6
                 &:nth-child(#{$i})
                     transition-delay: $i * .3s
-    .anim
-        position: absolute
-        mix-blend-mode: screen
-        left: 40vw
-        top: 20vh
 
 .container.fear 
     position: relative
     width: 70vw
-    background-color: rgba(180,0,0,0.9)
+    background-color: rgba(180,0,0,0.85)
     padding: 3em
     margin-left: 30vw
-    h1.blend 
-        font-size: 6em
-        color: rgb(114, 0, 0)
+    overflow: hidden
+    h1.blend
+        font-size: 7rem
+        color: rgba(114, 0, 0, 1)
         margin: 0
     .para 
         font-family: monospace
         margin: 2em 0
         max-width: 40em
+    .anim
+        position: absolute
+        mix-blend-mode: multiply
+        left: 20vw
+        bottom: 10vh
+
+.container.symbols .symbol
+    cursor: grab
+    position: absolute
+    top: 50vh
+    left: 50vw
+    transition: width 0.3s $cub-bez, height 0.3s $cub-bez
+    width: 60px
+    height: 60px
+    &:hover
+        width: 100px
+        height: 100px
+    img
+        width: 100%
+        height: 100%
+        margin-left: -50%
+        margin-top: -50%
+    .popup-box
+        overflow: hidden
+        position: absolute
+        width: 0
+        max-height: 0
+        top: 0
+        left: 0
+        transition: width 0.3s $cub-bez, max-height 0.5s $cub-bez 0.3s, left 0.3s $cub-bez, top 0.5s $cub-bez 0.3s
+        box-sizing: border-box
+        .text-wrapper
+            position: relative
+            width: 40vw
+            box-sizing: border-box
+    &:hover .popup-box
+        outline: 3px solid rgba(0, 23, 160, 1)
+        width: 40vw
+        left: -20vw
+
 
 .container.poems
     position: relative
