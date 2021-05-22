@@ -197,39 +197,59 @@ h1
         left: 20vw
         bottom: 10vh
 
-.container.symbols .symbol
-    cursor: grab
-    position: absolute
-    top: 50vh
-    left: 50vw
-    transition: width 0.3s $cub-bez, height 0.3s $cub-bez
-    width: 60px
-    height: 60px
-    &:hover
-        width: 100px
-        height: 100px
-    img
-        width: 100%
-        height: 100%
-        margin-left: -50%
-        margin-top: -50%
-    .popup-box
-        overflow: hidden
+.container.symbols
+    display: inline-flex !important
+    align-items: center
+    justify-content: center
+.container.symbols .frame
+    width: 48vmin
+    height: 72vmin
+    padding: 36vmin 24vmin
+    background: rgba(20, 42, 150, 0.58)
+    //border: 15px solid rgb(20, 42, 150)
+    .symbols
         position: absolute
-        width: 0
-        max-height: 0
-        top: 0
-        left: 0
-        transition: width 0.3s $cub-bez, max-height 0.5s $cub-bez 0.3s, left 0.3s $cub-bez, top 0.5s $cub-bez 0.3s
-        box-sizing: border-box
-        .text-wrapper
-            position: relative
-            width: 40vw
-            box-sizing: border-box
-    &:hover .popup-box
-        outline: 3px solid rgba(0, 23, 160, 1)
-        width: 40vw
-        left: -20vw
+        transform: rotate3d(10, 10, 1, 42deg)
+        transition: transform 0.5s $cub-bez
+        &:hover
+            transform: rotate3d(10, 10, 1, 15deg)
+        img
+            mix-blend-mode: difference
+        .symbol
+            cursor: grab
+            position: absolute
+            top: 50%
+            left: 50%
+            transition: width 0.3s $cub-bez, height 0.3s $cub-bez
+            width: 60px
+            height: 60px
+            z-index: 1
+            &:hover
+                z-index: 2
+                width: 100px
+                height: 100px
+            img
+                width: 100%
+                height: 100%
+                margin-left: -50%
+                margin-top: -50%
+            .popup-box
+                overflow: hidden
+                position: absolute
+                width: 0
+                max-height: 0
+                top: 0
+                left: 0
+                transition: width 0.3s $cub-bez, max-height 0.5s $cub-bez 0.3s, left 0.3s $cub-bez, top 0.5s $cub-bez 0.3s
+                box-sizing: border-box
+                .text-wrapper
+                    position: relative
+                    width: 40vw
+                    box-sizing: border-box
+            &:hover .popup-box
+                outline: 3px solid rgba(0, 23, 160, 1)
+                width: 40vw
+                left: -20vw
 
 
 .container.poems

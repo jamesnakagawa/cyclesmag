@@ -45,7 +45,7 @@ let symbols = document.querySelector('.container.symbols');
 let allSymbols = Array.from(symbols.querySelectorAll('.symbol'))
 
 let increment = Math.PI * 2 / allSymbols.length;
-const radius = 25;
+const radius = 35;
 let stepSize = Math.PI / 1440;
 let startPos = 0;
 function spin() {
@@ -73,10 +73,11 @@ function adjustPopupHeight(popup) {
     let id = popup.dataset.id;
     let height = popup.querySelector('.text-wrapper')
         .getBoundingClientRect().height
+    console.log(popup.querySelector('.text-wrapper').getBoundingClientRect());
     let element = document.createElement('style');
     document.head.appendChild(element);
     element.sheet.insertRule(`
-        .container.symbols .${id}:hover .popup-box {
+        .container.symbols .frame .symbols .${id}:hover .popup-box {
             top: -${height / 2}px;
             max-height: ${height}px;
         }
