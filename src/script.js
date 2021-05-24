@@ -20,7 +20,7 @@ const scroll = new LocomotiveScroll({
 scroll.init();
 
 drawBall('canvas.ball');
-drawCube('canvas.box');
+drawCube('canvas.box', {width: 30, height: 80, scroll});
 // makeNoise('noise');
 
 const timings = [500,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,100,100,500,40,40];

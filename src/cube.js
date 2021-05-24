@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import initOrbit from 'three-orbit-controls';
+// import initOrbit from 'three-orbit-controls';
 
-let OrbitControls = initOrbit(THREE);
+// let OrbitControls = initOrbit(THREE);
 
 export function makeRectangle() {
     //use texture loaders to create asset based things
@@ -40,9 +40,13 @@ export function makeRectangle() {
     return new THREE.Mesh(geometry, materials);
 }
 
-export function drawCube(selector) {
-    //THREEJS
+const defaultOpts = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    scroll: {scrollTo() {}}
+};
 
+export function drawCube(selector, options = defaultOpts) {
     //use texture loaders to create asset based things
     const textureLoader = new THREE.TextureLoader()
     const innerMaterial = textureLoader.load('textures/doombg.PNG');
@@ -79,7 +83,6 @@ export function drawCube(selector) {
     scene.add(rectangle);
 
     // Lights
-
     const pointLight = new THREE.PointLight(0xffffff, 0.08)
     pointLight.position.x = 2
     pointLight.position.y = 3
@@ -87,7 +90,6 @@ export function drawCube(selector) {
     scene.add(pointLight)
 
     //light 2
-
     const pointLight2 = new THREE.PointLight(0xff0000, 0.05)
     pointLight2.position.set(1,1,1)
     pointLight2.intensity = 1
@@ -135,24 +137,26 @@ export function drawCube(selector) {
      * Sizes
      */
     const sizes = {
+        width: window.innerWidth * options.width / 100,
+        height: window.innerHeight * options.height / 100
+    }
+    const fullscreen = {
         width: window.innerWidth,
         height: window.innerHeight
     }
+    let aspectTarget = sizes.width / sizes.height;
 
-    window.addEventListener('resize', () =>
-    {
-        // Update sizes
-        sizes.width = window.innerWidth
-        sizes.height = window.innerHeight
-
+    const resize = sizes => {
         // Update camera
-        camera.aspect = sizes.width / sizes.height
-        camera.updateProjectionMatrix()
+        aspectTarget = sizes.width / sizes.height;
 
         // Update renderer
         renderer.setSize(sizes.width, sizes.height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    });
+    }
+    const boundResize = resize.bind(null, sizes);
+
+    window.addEventListener('resize', resize.bind(null, sizes));
 
     /**
      * Camera
@@ -198,23 +202,33 @@ export function drawCube(selector) {
         mouseY = (event.clientY - windowHalfY)
     }
 
-
     let origZoomTarget = camera.position.z;
     let zoomTarget = origZoomTarget;
-    canvas.addEventListener('mousedown', function() {
-        zoomTarget = 3
-    });
-    canvas.addEventListener('mouseup', function() {
-        zoomTarget = origZoomTarget;
+    canvas.addEventListener('click', () => {
+        resize(fullscreen);
+
+        window.removeEventListener('resize', boundResize);
+        window.addEventListener('resize', resize.bind(null, fullscreen));
+
+        options.scroll.scrollTo(canvas);
+
+        canvas.style.top = 0;
+
+        canvas.addEventListener('mousedown', () => {
+            zoomTarget = 3
+        });
+        canvas.addEventListener('mouseup', () => {
+            zoomTarget = origZoomTarget;
+        });
     });
 
-    const clock = new THREE.Clock()
+    // const clock = new THREE.Clock()
 
     const tick = () => {
         targetX = mouseX * 0.001
         targetY = mouseY * 0.001
 
-        const elapsedTime = clock.getElapsedTime()
+        // const elapsedTime = clock.getElapsedTime()
 
         // Update objects
         //cube.rotation.y = .2 * elapsedTime
@@ -228,7 +242,9 @@ export function drawCube(selector) {
         rectangle.rotation.x +=  1.5 * (targetY - rectangle.rotation.x)
         rectangle.position.z += -.05 * (targetY - rectangle.rotation.x)
 
-        camera.position.z += .05 * (zoomTarget - camera.position.z)
+        camera.position.z += .05 * (zoomTarget - camera.position.z);
+        camera.aspect += .05 * (aspectTarget - camera.aspect);
+        camera.updateProjectionMatrix();
 
         // Update Orbital Controls
         // controls.update()
