@@ -20,8 +20,7 @@ h1
     top: 0px
     left: 0px
     height: 100vh
-    width: 820vw
-    // display: flex
+    width: 900vw
 
 [data-scroll-section] *
     white-space: normal
@@ -151,6 +150,7 @@ h1
     z-index: 2
     width: 100vw
     margin-left: 50vw
+    margin-right: -90vw
     left: 10vw
     .fight-or-flee 
         position: absolute
@@ -175,6 +175,39 @@ h1
             @for $i from 1 through 6
                 &:nth-child(#{$i})
                     transition-delay: $i * .3s
+
+.container.ghosts
+    perspective: 500px
+    perspective-origin: center center
+    width: 200vw
+    z-index: 3
+    .ghost
+        position: absolute
+        width: 270px
+        height: 72px
+        top: 50vh
+        left: 100vw
+        &.initialized
+            transition: transform 1s ease-out, opacity 2s ease-out
+        &.hover
+            transition-duration: 0.5s
+            z-index: 999 !important
+            opacity: 1 !important
+            .inner
+                border-color: #0f0
+        .inner
+            cursor: pointer
+            user-select: none
+            width: 100%
+            height: 100%
+            margin-left: -50%
+            margin-top: -50%
+            padding: 1rem
+            color: white
+            border: 3px solid white
+            background: black
+            font-family: sans-serif
+            box-sizing: border-box
 
 .container.fear 
     position: relative

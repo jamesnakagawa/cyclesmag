@@ -1,11 +1,10 @@
 import LocomotiveScroll from 'locomotive-scroll';
-// import LocomotiveScroll from '../../locomotive-scroll/src/scripts/Smooth';
 import './style.sass';
 import './locomotive.css';
 import {drawBall} from './ball';
 import {drawCube} from './cube';
-// import {initText} from './text';
 import {makeNoise} from './noise';
+import {initializeGhost} from './ghost';
 
 document.body.classList.remove('preload');
 document.querySelector('.title').classList.add('active');
@@ -18,6 +17,20 @@ const scroll = new LocomotiveScroll({
 });
 
 scroll.init();
+
+let ghosts = [];
+document.querySelectorAll('.ghost').forEach(ghost => {
+    ghosts.push(initializeGhost(ghost));
+});
+scroll.on('call', (event_name, direction) => {
+    if (event_name === 'ghosts') {
+        if (direction === 'enter') {
+            ghosts.forEach(ghost => ghost.resume());
+        } else if (direction === 'exit') {
+            ghosts.forEach(ghost => ghost.pause());
+        }
+    }
+});
 
 drawBall('canvas.ball');
 drawCube('canvas.box', {width: 30, height: 80, scroll});
@@ -85,5 +98,3 @@ function adjustPopupHeight(popup) {
 }
 document.querySelectorAll('.popup-box')
         .forEach(adjustPopupHeight);
-
-//initText();
