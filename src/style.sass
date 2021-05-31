@@ -14,6 +14,27 @@ body.preload
 h1 
     font-family: Michroma, Helvetica, sans-serif
 
+nav
+    z-index: 99
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    text-align: center
+    &:hover a
+        opacity: 0.7
+    a
+        transition: opacity 500ms $cub-bez
+        opacity: 0.3
+        color: #fff
+        display: inline-block
+        text-decoration: none
+        font-size: 16pt
+        width: 1em
+        &.active, &:hover
+            opacity: 1
+
+
 .horizontal-div 
     background-image: url('./grid-02.png')
     background-repeat: repeat
@@ -21,6 +42,7 @@ h1
     left: 0px
     height: 100vh
     width: 900vw
+    z-index: 1
 
 [data-scroll-section] *
     white-space: normal
