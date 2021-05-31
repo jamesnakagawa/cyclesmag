@@ -207,12 +207,26 @@ export function drawCube(selector, options = defaultOpts) {
     canvas.addEventListener('click', () => {
         resize(fullscreen);
 
+        const boundFullscreen = resize.bind(null, fullscreen)
         window.removeEventListener('resize', boundResize);
-        window.addEventListener('resize', resize.bind(null, fullscreen));
+        window.addEventListener('resize', boundFullscreen);
 
         options.scroll.scrollTo(canvas);
 
         canvas.style.top = 0;
+
+        let close = document.createElement('img');
+        close.setAttribute('src', '/close.svg');
+        close.classList.add('close-icon');
+        setTimeout(() => close.classList.add('active'), 1500);
+        close.addEventListener('click', function() {
+            resize(sizes);
+            window.removeEventListener('resize', boundFullscreen);
+            window.addEventListener('resize', boundResize);
+            canvas.style.top = '10vh';
+            close.remove();
+        });
+        canvas.parentElement.append(close);
 
         canvas.addEventListener('mousedown', () => {
             zoomTarget = 3
