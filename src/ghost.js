@@ -4,11 +4,11 @@ export const initializeGhost = (ghost, start = true) => {
     let bbox = ghost.getBoundingClientRect();
     let bounds = {
         outside: -150,
-        inside: 50,
+        inside: 0,
     }
     let safeBounds = {
         outside: -100,
-        inside: 0
+        inside: -20
     };
     let interval;
 
