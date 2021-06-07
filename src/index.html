@@ -9,9 +9,21 @@
 </head>
 <body class='preload'>
 
+<nav>
+    <a href="#one">&bullet;</a>
+    <a href="#two">&bullet;</a>
+    <a href="#three">&bullet;</a>
+    <a href="#four">&bullet;</a>
+    <a href="#five">&bullet;</a>
+    <a href="#six">&bullet;</a>
+    <a href="#seven">&bullet;</a>
+    <a href="#eight">&bullet;</a>
+    <a href="#nine">&bullet;</a>
+</nav>
+
 <div class="horizontal-div" data-scroll-container data-horizontal="true">
     <div class="container cycles" data-scroll-section>
-        <h1 class='title boxed bold' data-scroll data-scroll-repeat>
+        <h1 class='title boxed bold' data-scroll data-scroll-repeat data-scroll-call="nav-1">
             <span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>Y</span></span><span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>L</span></span><span class='let'><span class='inner'>E</span></span><span class='let'><span class='inner'>S</span></span>
         </h1>
 
@@ -34,7 +46,7 @@
     </div>
 
     <div class="fixed-cont" data-scroll-section>
-        <div class="target-rect">
+        <div class="target-rect" data-scroll data-scroll-call="nav-2" data-scroll-repeat>
             &nbsp;
         </div>
         <div class="clip-rect" data-scroll data-scroll-sticky data-scroll-target=".target-rect">
@@ -56,7 +68,7 @@
     </div>
 
     <div class="slide2" data-scroll-section>
-        <div class="text-wrapper topLeft">
+        <div class="text-wrapper topLeft" data-scroll data-scroll-call="nav-3" data-scroll-repeat>
             <p>In life we find ourselves challenged by those patterns,</p>
         </div>
         <div class="text-wrapper topLeft2">
@@ -66,7 +78,7 @@
     </div>
 
     <div class="container ball" data-scroll-section>
-        <h1 class="fight-or-flee" data-scroll data-scroll-speed="5">
+        <h1 class="fight-or-flee" data-scroll data-scroll-speed="5" data-scroll-call="nav-4" data-scroll-repeat>
             <div class='line'>Will you</div>
             <div class='line'>fight or</div>
             <div class='line'>flee from</div>
@@ -76,7 +88,7 @@
     </div>
 
     <div class='container fear' data-scroll-section>
-        <h1 class="blend">FEAR.</h1>
+        <h1 class="blend" data-scroll data-scroll-call="nav-6" data-scroll-repeat>FEAR.</h1>
         <div class="para">
             It isn't so much the presence of fear, as it is about its absence. You notice it - the peacefulness of a head void of anxieties. You start to wonder when it will be back, what you will do then.
         </div>
@@ -110,7 +122,7 @@
 
 
     <div class="container symbols" data-scroll-section>
-        <div class="frame">
+        <div class="frame" data-scroll data-scroll-call="nav-7" data-scroll-repeat>
             <div class="symbols">
                 <div class="symbol sym1">
                     <img src="sym1.svg"/>
@@ -208,7 +220,7 @@
 <!--    </div>-->
 
     <div class="container poems" data-scroll-section>
-        <div class="poem1 blue-box" data-scroll data-scroll-call="flicker">
+        <div class="poem1 blue-box" data-scroll data-scroll-call="flicker" data-scroll-call="nav-8" data-scroll-repeat>
             <p>
             Like all things<br/>
             we have come full circle<br/>
@@ -254,6 +266,7 @@
 <!--        </div>-->
 <!--    </div>-->
     <div class="container box" data-scroll-section>
+        <div data-scroll data-scroll-call="nav-9" data-scroll-repeat>&nbsp;</div>
         <canvas class="box"></canvas>
     </div>
 

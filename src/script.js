@@ -30,6 +30,18 @@ scroll.on('call', (event_name, direction) => {
             ghosts.forEach(ghost => ghost.pause());
         }
     }
+    if (event_name.substring(0,4) === 'nav-') {
+        if (direction === 'enter') {
+            let num = parseInt(event_name.match(/\d+/)[0], 10) - 1;
+            document.querySelectorAll('nav a').forEach((el, i) => {
+                if (i === num) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            })
+        }
+    }
 });
 
 drawBall('canvas.ball');
@@ -49,7 +61,6 @@ scroll.on('call', function(event_name, direction, obj) {
             if (nextInterval)
                 setTimeout(tail, nextInterval);
         })();
-        obj.el
     }
 });
 
@@ -86,7 +97,6 @@ function adjustPopupHeight(popup) {
     let id = popup.dataset.id;
     let height = popup.querySelector('.text-wrapper')
         .getBoundingClientRect().height
-    console.log(popup.querySelector('.text-wrapper').getBoundingClientRect());
     let element = document.createElement('style');
     document.head.appendChild(element);
     element.sheet.insertRule(`
@@ -98,3 +108,10 @@ function adjustPopupHeight(popup) {
 }
 document.querySelectorAll('.popup-box')
         .forEach(adjustPopupHeight);
+
+document.querySelectorAll('nav a').forEach((el, i) => {
+    const divEl = document.querySelector(`.horizontal-div > div:nth-child(${i + 1})`);
+    el.addEventListener('click', () => {
+        scroll.scrollTo(divEl)
+    })
+})
