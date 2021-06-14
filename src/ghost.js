@@ -13,8 +13,8 @@ export const initializeGhost = (ghost, start = true) => {
     let interval;
 
     let initBounds = () => {
-        let xRange = window.innerWidth * 2 - bbox.width;
-        let yRange = window.innerHeight - bbox.height;
+        let xRange = window.innerWidth - bbox.width;
+        let yRange = window.innerHeight * 2 - bbox.height;
         Object.assign(bounds, {
             top: -yRange / 2,
             left: -xRange / 2,
@@ -85,11 +85,26 @@ export const initializeGhost = (ghost, start = true) => {
         ghostInner[fn]('mouseout', mouseout);
         stick = !stick;
     };
+    let clickedFlag = false;
+    let mousedown = () => {
+        clickedFlag = true;
+    };
+    let mouseup = () => {
+        clickedFlag = false;
+    };
+    let mousemove = e => {
+        if (clickedFlag) {
+            setTransform(x += e.deltaX, y += e.deltaY, z);
+        }
+    };
     ghostInner.addEventListener('mouseover', mouseover);
     ghostInner.addEventListener('mouseout', mouseout);
     ghostInner.addEventListener('click', click);
     window.addEventListener('resize', initBounds);
+    ghostInner.addEventListener('mousedown', mousedown);
+    ghostInner.addEventListener('mouseup', mouseup);
+    ghostInner.addEventListener('mousemove', mousemove);
 
-    if (start) resume();
+    if (start === true) resume();
     return {pause, resume};
 };

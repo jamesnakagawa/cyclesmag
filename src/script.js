@@ -13,23 +13,20 @@ const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     lerp: 0.7,
-    direction: 'horizontal'
 });
 
 scroll.init();
 
-let ghosts = [];
-document.querySelectorAll('.ghost').forEach(ghost => {
-    ghosts.push(initializeGhost(ghost));
-});
+let ghosts = Array.from(document.querySelectorAll('.ghost')).map(g => initializeGhost(g));
+
 scroll.on('call', (event_name, direction) => {
-    if (event_name === 'ghosts') {
-        if (direction === 'enter') {
-            ghosts.forEach(ghost => ghost.resume());
-        } else if (direction === 'exit') {
-            ghosts.forEach(ghost => ghost.pause());
-        }
-    }
+    // if (event_name === 'ghosts') {
+    //     if (direction === 'enter') {
+    //         ghosts.forEach(ghost => ghost.resume());
+    //     } else if (direction === 'exit') {
+    //         ghosts.forEach(ghost => ghost.pause());
+    //     }
+    // }
     if (event_name.substring(0,4) === 'nav-') {
         if (direction === 'enter') {
             let num = parseInt(event_name.match(/\d+/)[0], 10) - 1;
@@ -42,29 +39,23 @@ scroll.on('call', (event_name, direction) => {
             })
         }
     }
-});
-
-drawBall('canvas.ball');
-drawCube('canvas.box', {width: 30, height: 80, scroll});
-// makeNoise('noise');
-
-const timings = [500,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,100,100,500,40,40];
-scroll.on('call', function(event_name, direction, obj) {
-    if (event_name === 'flicker') {
-        const timings_ = [...timings];
-        (function light_switch() {
-            const nextInterval = timings_.shift();
-            const tail = () => {
-                obj.el.classList.toggle('bright');
-                light_switch();
-            }
-            if (nextInterval)
-                setTimeout(tail, nextInterval);
-        })();
+    if (event_name === 'nav-9') {
+        if (direction === 'enter') {
+            document.body.classList.add('inverted');
+        } else {
+            document.body.classList.remove('inverted');
+        }
     }
 });
 
-let symbols = document.querySelector('.container.symbols');
+if (document.querySelector('canvas.ball'))
+    drawBall('canvas.ball');
+if (document.querySelector('canvas.box'))
+    drawCube('canvas.box', {width: 30, height: 80, scroll});
+
+// makeNoise('noise');
+
+let symbols = document.querySelector('.container.ghosts');
 
 let allSymbols = Array.from(symbols.querySelectorAll('.symbol'))
 
