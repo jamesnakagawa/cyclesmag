@@ -41,7 +41,7 @@ nav
     top: 0px
     left: 0px
     height: 100vh
-    width: 900vw
+    width: 1000vw
     z-index: 1
 
 [data-scroll-section] *
@@ -313,6 +313,38 @@ nav
                 width: 40vw
                 left: -20vw
 
+@keyframes upndown
+    0% 
+        top: 30vh
+    100%
+        top: 33vh
+
+.container.tunnel
+    position: relative
+    canvas
+        position: absolute
+        top: 10vh
+    .tunnel-wrapper
+        overflow: hidden
+        width: 100vw
+        height: 100vh
+        position: relative
+
+    img.tunnel    
+        height: 200px
+        position: absolute
+        top: 30vh
+        left: 40vw
+        animation-name: upndown
+        animation-duration: 3s
+        animation-iteration-count: infinite
+        animation-direction: alternate
+        transition: transform 2s ease-in-out
+        cursor: help
+    img.tunnel.clicked
+        transform: scale(1500%, 1500%)
+        transform-origin: 100px, 100px
+        cursor: auto
 
 .container.poems
     position: relative

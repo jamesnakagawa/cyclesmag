@@ -114,4 +114,14 @@ document.querySelectorAll('nav a').forEach((el, i) => {
     el.addEventListener('click', () => {
         scroll.scrollTo(divEl)
     })
+
+
 })
+
+var tunnel = document.querySelector('img.tunnel')
+if (tunnel) {
+    console.log('hello')
+    tunnel.addEventListener('click', function() {
+        tunnel.classList.add('clicked')
+    })
+}
