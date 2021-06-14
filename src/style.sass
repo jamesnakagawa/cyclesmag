@@ -3,6 +3,9 @@
     padding: 0
 
 $cub-bez: cubic-bezier(.215,.61,.355,1)
+@font-face
+    font-family: 'Migra Extralight italic'
+    src: url('./MigraItalic-ExtralightItalic.woff2') format("woff2"), url('./MigraItalic-ExtralightItalic.woff') format("woff")
 
 html, body 
     height: 100vh
@@ -12,7 +15,10 @@ body.preload
     transition: none !important
 
 h1 
-    font-family: Michroma, Helvetica, sans-serif
+    font-family: 'Migra Extralight italic'
+    font-size: 500px
+    font-weight: normal
+    color: #ee0303
 
 nav
     z-index: 99
@@ -41,7 +47,7 @@ nav
     top: 0px
     left: 0px
     height: 100vh
-    width: 900vw
+    width: 1000vw
     z-index: 1
 
 [data-scroll-section] *
@@ -59,7 +65,8 @@ nav
     //&:hover 
         background: rgba(255,255,255,1)
         color: #000
-
+.container.endtitle
+    margin-right: 100px
 .container.cycles
     position: relative
     z-index: 2
@@ -72,7 +79,8 @@ nav
         transform: translate(-50%, -50%)
         overflow: hidden
         color: #fff
-        
+.symbol
+    color: #636363
     // Letter-by-letter animation
     .let 
         display: inline-block
