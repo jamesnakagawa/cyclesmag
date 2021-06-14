@@ -42,6 +42,13 @@ scroll.on('call', (event_name, direction) => {
             })
         }
     }
+    if (event_name === 'nav-9') {
+        if (direction === 'enter') {
+            document.body.classList.add('inverted');
+        } else {
+            document.body.classList.remove('inverted');
+        }
+    }
 });
 
 drawBall('canvas.ball');

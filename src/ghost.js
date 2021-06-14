@@ -85,10 +85,25 @@ export const initializeGhost = (ghost, start = true) => {
         ghostInner[fn]('mouseout', mouseout);
         stick = !stick;
     };
+    let clickedFlag = false;
+    let mousedown = () => {
+        clickedFlag = true;
+    };
+    let mouseup = () => {
+        clickedFlag = false;
+    };
+    let mousemove = e => {
+        if (clickedFlag) {
+            setTransform(x += e.deltaX, y += e.deltaY, z);
+        }
+    };
     ghostInner.addEventListener('mouseover', mouseover);
     ghostInner.addEventListener('mouseout', mouseout);
     ghostInner.addEventListener('click', click);
     window.addEventListener('resize', initBounds);
+    ghostInner.addEventListener('mousedown', mousedown);
+    ghostInner.addEventListener('mouseup', mouseup);
+    ghostInner.addEventListener('mousemove', mousemove);
 
     if (start) resume();
     return {pause, resume};

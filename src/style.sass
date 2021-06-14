@@ -35,30 +35,30 @@ nav
             opacity: 1
 
 
-.horizontal-div 
+.horizontal-div
     background-image: url('./grid-02.png')
     background-repeat: repeat
     top: 0px
     left: 0px
     height: 100vh
-    width: 900vw
+    width: 1000vw
     z-index: 1
 
 [data-scroll-section] *
     white-space: normal
 
-.boxed 
+.boxed
     padding: 1rem
     border: 1px solid #fff
     cursor: default
     background: rgba(255,255,255,0)
     color: #000000
     transition: background 0.4s $cub-bez, color 0.5s $cub-bez
-    &.bold 
+    &.bold
         border-width: 2px
-    //&:hover 
-        background: rgba(255,255,255,1)
-        color: #000
+//&:hover
+    background: rgba(255,255,255,1)
+    color: #000
 
 .container.cycles
     position: relative
@@ -72,43 +72,94 @@ nav
         transform: translate(-50%, -50%)
         overflow: hidden
         color: #fff
-        
+
     // Letter-by-letter animation
-    .let 
+    .let
         display: inline-block
         transform: translateY(150%)
-        .inner 
+        .inner
             display: inline-block
             transition: transform 0.4s ease-in-out
-    .title.is-inview .let .inner 
+    .title.is-inview .let .inner
         transform: translateY(-150%)
     @for $i from 1 through 6
         .let:nth-child(#{$i}) .inner
             transition-delay: 0.4s + 0.1s * $i
-    @keyframes spin 
-        0% 
-          transform: rotate(0deg) 
+    @keyframes spin
+        0%
+            transform: rotate(0deg)
         100%
-          transform: rotate(360deg) 
-    .intro 
+            transform: rotate(360deg)
+    .intro
         position: absolute
         top: 55vh
         width: 30vw
         left: 25vw
         transform: translate(-50%)
-    .corner 
+    .corner
         position: absolute
         font-family: Michroma, Helvetica, sans-serif
         color: #fff
         font-size: 0.8rem
         letter-spacing: 1px
-        &.left 
-            left: 1rem    
-        &.right 
+        &.left
+            left: 1rem
+        &.right
             right: 1rem
-        &.top 
+        &.top
             top: 1rem
-        &.bottom 
+        &.bottom
+            bottom: 1rem
+
+.container.cycles2
+    position: relative
+    z-index: 2
+    .title
+        font-size: 20pt
+        position: absolute
+        line-height: 1em
+        top: 40vh
+        left: 25vw
+        transform: translate(-50%, -50%)
+        overflow: hidden
+        color: #fff
+
+    // Letter-by-letter animation
+    .let
+        display: inline-block
+        transform: translateY(150%)
+        .inner
+            display: inline-block
+            transition: transform 0.4s ease-in-out
+    .title.is-inview .let .inner
+        transform: translateY(-150%)
+    @for $i from 1 through 6
+        .let:nth-child(#{$i}) .inner
+            transition-delay: 0.4s + 0.1s * $i
+    @keyframes spin
+        0%
+            transform: rotate(0deg)
+        100%
+            transform: rotate(360deg)
+    .intro
+        position: absolute
+        top: 55vh
+        width: 30vw
+        left: 25vw
+        transform: translate(-50%)
+    .corner
+        position: absolute
+        font-family: Michroma, Helvetica, sans-serif
+        color: #fff
+        font-size: 0.8rem
+        letter-spacing: 1px
+        &.left
+            left: 1rem
+        &.right
+            right: 1rem
+        &.top
+            top: 1rem
+        &.bottom
             bottom: 1rem
 
 .fixed-cont
@@ -124,7 +175,7 @@ nav
         left: 0
         right: 0
         height: 100vh
-    .clip-rect 
+    .clip-rect
         z-index: 4
         position: absolute
         left: 0
@@ -132,7 +183,7 @@ nav
         width: 100vw
         height: 100vh
         background: rgba(15, 15, 15, 0.85)
-        img 
+        img
             opacity: 59%
             position: absolute
             left: 25vw
@@ -165,18 +216,18 @@ nav
     z-index: 2
     width: 100vw
     left: 100vw
-    & > .text-wrapper 
+    & > .text-wrapper
         width: 40vw
         position: relative
 
-.container.ball 
+.container.ball
     position: relative
     z-index: 2
     width: 100vw
     margin-left: 50vw
     margin-right: 10vw
     left: 10vw
-    .fight-or-flee 
+    .fight-or-flee
         position: absolute
         font-family: Michroma, Helvetica, sans-serif
         margin-bottom: 0px
@@ -238,7 +289,7 @@ nav
     .prose
         width: 400px
 
-.container.fear 
+.container.fear
     position: relative
     width: 70vw
     background-color: rgba(180,0,0,0.85)
@@ -249,7 +300,7 @@ nav
         font-size: 7rem
         color: rgba(114, 0, 0, 1)
         margin: 0
-    .para 
+    .para
         font-family: monospace
         margin: 2em 0
         max-width: 40em
@@ -320,10 +371,14 @@ nav
     align-items: center
     justify-content: center
     .poem1
-        position: static
-        width: 60vw
+        position: relative
+        width: 30vw
+        min-width: 45em
         p:not(:first-child)
             margin-top: 0.75rem
+    img
+        position: absolute
+        z-index: -1
 
 .container.deeper
     display: inline-flex !important
@@ -363,7 +418,7 @@ nav
         &.active
             opacity: 1
 
-.blend 
+.blend
     mix-blend-mode: difference
 
 .blue-box
@@ -401,51 +456,70 @@ nav
         right: 10vw
         max-width: 400px
 
-.dark-panel 
+.dark-panel
     width: 30vw
     height: 100vh
     background-color: black
     padding: 30px
 
-img 
+img
     display: block
     margin: 20px
     box-shadow: 5px 4px 40px 0 rgba(0,0,0,0.26)
 
-h5 
+h5
     font-size: 30px
     color: rgb(207, 207, 207)
 
-p 
+p
     font-size: 13px
     font-family: monospace
     font-weight: normal
     line-height: 1.4em
 
-div 
+div
     box-sizing: border-box
 
-.column 
+.column
     width: 35vw
     position: absolute
     right: 10vw
     top: 50vh
 
-.section 
+.section
     width: 100vw
     position: relative
 
-p.light 
+p.light
     color: rgb(175, 175, 175)
     font-family: monospace
     font-weight: 200
 
-.header-wrapper 
+.header-wrapper
     position: relative
     padding-top: 20px
 
-.container 
+.container
     width: 100vw
     height: 100vh
     position: relative
     outline: 0px solid #0f0
+
+.background-inverter
+    position: fixed
+    z-index: 100
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: #fff
+    mix-blend-mode: difference
+    pointer-events: none
+    opacity: 0
+    transition: opacity 1.5s $cub-bez
+
+body.inverted
+    .horizontal-div
+        position: relative
+    .background-inverter
+        opacity: 1
