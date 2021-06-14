@@ -40,8 +40,8 @@ nav
     background-repeat: repeat
     top: 0px
     left: 0px
-    height: 100vh
-    width: 1000vw
+    //height: 100vh
+    //width: 1000vw
     z-index: 1
 
 [data-scroll-section] *
@@ -102,6 +102,7 @@ nav
         color: #fff
         font-size: 0.8rem
         letter-spacing: 1px
+        z-index: 2
         &.left
             left: 1rem
         &.right
@@ -110,6 +111,41 @@ nav
             top: 1rem
         &.bottom
             bottom: 1rem
+    .clip-rect
+        z-index: 1
+        position: absolute
+        left: 50vw
+        overflow: hidden
+        width: 100vw
+        height: 100vh
+        background: rgba(15, 15, 15, 0.85)
+        img
+            opacity: 59%
+            position: absolute
+            left: 25vw
+            top: 50vh
+            margin-top: -65vh
+            margin-left: -65vw
+            width: 130vw
+            height: 130vh
+            animation: spin 120s linear infinite
+    .text-box
+        z-index: 4
+        position: absolute
+        left: 0
+        top: 10vh
+        width: 100vw
+        .inner
+            position: absolute
+            left: calc(67vw - 15vh)
+            width: 35vw
+            height: 80vh
+            opacity: 0
+            transition: opacity 1.5s $cub-bez
+            p
+                margin-bottom: 0.6rem
+        &.is-inview .inner
+            opacity: 1
 
 .container.cycles2
     position: relative
@@ -162,55 +198,6 @@ nav
         &.bottom
             bottom: 1rem
 
-.fixed-cont
-    position: absolute
-    z-index: 1
-    left: 50vw
-    width: 200vw
-    height: 100vh
-    // overflow: hidden
-    .target-rect
-        z-index: 5
-        position: absolute
-        left: 0
-        right: 0
-        height: 100vh
-    .clip-rect
-        z-index: 4
-        position: absolute
-        left: 0
-        overflow: hidden
-        width: 100vw
-        height: 100vh
-        background: rgba(15, 15, 15, 0.85)
-        img
-            opacity: 59%
-            position: absolute
-            left: 25vw
-            top: 50vh
-            margin-top: -65vh
-            margin-left: -65vw
-            width: 130vw
-            height: 130vh
-            animation: spin 120s linear infinite
-    .text-box
-        z-index: 4
-        position: absolute
-        left: 0
-        top: 10vh
-        width: 100vw
-        .inner
-            position: absolute
-            left: calc(67vw - 15vh)
-            width: 35vw
-            height: 80vh
-            opacity: 0
-            transition: opacity 1.5s $cub-bez
-            p
-                margin-bottom: 0.6rem
-        &.is-inview .inner
-            opacity: 1
-
 .slide2
     position: relative
     z-index: 2
@@ -224,9 +211,6 @@ nav
     position: relative
     z-index: 2
     width: 100vw
-    margin-left: 50vw
-    margin-right: 10vw
-    left: 10vw
     .fight-or-flee
         position: absolute
         font-family: Michroma, Helvetica, sans-serif
@@ -254,16 +238,18 @@ nav
 .container.ghosts
     perspective: 500px
     perspective-origin: center center
-    width: 200vw
+    height: 200vh
     z-index: 3
-    margin-top: 60px
-    margin-bottom: 60px
+    margin-top: -15vh
     .ghost
         position: absolute
         width: 270px
+        &.sym
+            width: 180px
+            mix-blend-mode: difference
         height: auto
-        top: 50vh
-        left: 100vw
+        top: 100vh
+        left: 50vw
         &.initialized
             transition: transform 1s ease-out, opacity 2s ease-out
         &.hover
@@ -279,22 +265,22 @@ nav
             height: 100%
             margin-left: -50%
             margin-top: -50%
-            padding: 1rem
-            color: white
-            border: 1px solid white
-            background: black
             box-sizing: border-box
-            font-family: monospace
-            line-height: 1.2rem
+            &.text
+                padding: 1rem
+                color: white
+                border: 1px solid white
+                background: black
+                font-family: monospace
+                line-height: 1.2rem
     .prose
         width: 400px
 
 .container.fear
     position: relative
-    width: 70vw
+    width: 100vw
     background-color: rgba(180,0,0,0.85)
     padding: 3em
-    margin-left: 30vw
     overflow: hidden
     h1.blend
         font-size: 7rem
@@ -307,18 +293,17 @@ nav
     .anim
         position: absolute
         mix-blend-mode: multiply
-        left: 20vw
-        bottom: 10vh
+        right: 20vw
+        top: 35vh
 
-.container.symbols
+.container.ghosts
     display: inline-flex !important
     align-items: center
     justify-content: center
-.container.symbols .frame
-    width: 48vmin
-    height: 72vmin
-    padding: 36vmin 24vmin
-    background: rgba(20, 42, 150, 0.58)
+.container.ghosts .frame
+    width: 56vmin
+    height: 88vmin
+    padding: 44vmin 28vmin
     //border: 15px solid rgb(20, 42, 150)
     .symbols
         position: absolute
@@ -436,7 +421,7 @@ nav
     box-sizing: border-box
     background-color: ghostwhite
     border: #0e0808 1px solid
-    box-shadow: 5px 5px
+    //box-shadow: 5px 5px
     &.default
         left: 30vw
         right: 30vw
@@ -465,7 +450,7 @@ nav
 img
     display: block
     margin: 20px
-    box-shadow: 5px 4px 40px 0 rgba(0,0,0,0.26)
+    //box-shadow: 5px 4px 40px 0 rgba(0,0,0,0.26)
 
 h5
     font-size: 30px

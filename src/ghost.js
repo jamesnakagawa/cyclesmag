@@ -13,8 +13,8 @@ export const initializeGhost = (ghost, start = true) => {
     let interval;
 
     let initBounds = () => {
-        let xRange = window.innerWidth * 2 - bbox.width;
-        let yRange = window.innerHeight - bbox.height;
+        let xRange = window.innerWidth - bbox.width;
+        let yRange = window.innerHeight * 2 - bbox.height;
         Object.assign(bounds, {
             top: -yRange / 2,
             left: -xRange / 2,
@@ -105,6 +105,6 @@ export const initializeGhost = (ghost, start = true) => {
     ghostInner.addEventListener('mouseup', mouseup);
     ghostInner.addEventListener('mousemove', mousemove);
 
-    if (start) resume();
+    if (start === true) resume();
     return {pause, resume};
 };
