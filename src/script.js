@@ -5,9 +5,10 @@ import {drawBall} from './ball';
 import {drawCube} from './cube';
 import {makeNoise} from './noise';
 import {initializeGhost} from './ghost';
+import {drawHead} from "./head";
 
 document.body.classList.remove('preload');
-document.querySelector('.title').classList.add('active');
+// document.querySelector('.title').classList.add('active');
 
 const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
@@ -105,14 +106,23 @@ document.querySelectorAll('nav a').forEach((el, i) => {
     el.addEventListener('click', () => {
         scroll.scrollTo(divEl)
     })
-
-
 })
 
 var tunnel = document.querySelector('img.tunnel')
 if (tunnel) {
-    console.log('hello')
     tunnel.addEventListener('click', function() {
         tunnel.classList.add('clicked')
     })
 }
+
+const head = drawHead('.head-obj', 300, 300);
+
+let rotation1 = {x: -0.5527097, y: 0.5060741, z: 0.0922722};
+let rotation2 = {x: -0.1850667, y: 0.1853109, z: -0.0013261};
+let symbols_container = document.querySelector('.symbols');
+symbols_container.addEventListener('mouseover', function() {
+    head.setRotation(rotation2);
+});
+symbols_container.addEventListener('mouseout', function() {
+    head.setRotation(rotation1);
+});
