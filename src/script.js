@@ -91,8 +91,9 @@ function adjustPopupHeight(popup) {
         .getBoundingClientRect().height
     let element = document.createElement('style');
     document.head.appendChild(element);
+    console.log(height);
     element.sheet.insertRule(`
-        .container.symbols .frame .symbols .${id}:hover .popup-box {
+        .container.ghosts .frame .symbols .${id}:hover .popup-box {
             top: -${height / 2}px;
             max-height: ${height}px;
         }
