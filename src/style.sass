@@ -5,8 +5,8 @@
 $cub-bez: cubic-bezier(.215,.61,.355,1)
 
 html, body 
-    height: 100vh
     background: #00050a
+    overflow-x: hidden
 
 body.preload
     transition: none !important
@@ -15,33 +15,33 @@ h1
     font-family: Migra
     font-weight: 400
 
-nav
-    z-index: 99
-    position: fixed
-    top: 30vh
-    left: 0
-    text-align: center
-    &:hover a
-        opacity: 0.7
-    a
-        transition: opacity 500ms $cub-bez
-        opacity: 0.3
-        color: #fff
-        display: block
-        text-decoration: none
-        font-size: 16pt
-        width: 1em
-        &.active, &:hover
-            opacity: 1
+//nav
+//    z-index: 99
+//    position: fixed
+//    top: 30vh
+//    left: 0
+//    text-align: center
+//    &:hover a
+//        opacity: 0.7
+//    a
+//        transition: opacity 500ms $cub-bez
+//        opacity: 0.3
+//        color: #fff
+//        display: block
+//        text-decoration: none
+//        font-size: 16pt
+//        width: 1em
+//        &.active, &:hover
+//            opacity: 1
 
 
 .horizontal-div
     background-image: url('./grid-02.png')
     background-repeat: repeat
-    top: 0px
-    left: 0px
+    top: 0
+    left: 0
     //height: 100vh
-    //width: 1000vw
+    width: 100vw
     z-index: 1
 
 [data-scroll-section] *
@@ -147,80 +147,38 @@ nav
         &.is-inview .inner
             opacity: 1
 
-.container.cycles2
-    position: relative
-    z-index: 2
-    .title
-        font-size: 20pt
+#modal
+    background: black
+    position: fixed
+    height: 100vh
+    width: 100vw
+    top: 0
+    left: 0
+    z-index: 100
+    transition: opacity 2s ease-in-out
+    &.show
+        display: block
+    &.active
+        opacity: 1
+        transition-duration: 1s
+    //&:empty
+    display: none
+    opacity: 0
+    .close
         position: absolute
-        line-height: 1em
-        top: 40vh
-        left: 25vw
-        transform: translate(-50%, -50%)
-        overflow: hidden
-        color: #fff
-
-    // Letter-by-letter animation
-    .let
-        display: inline-block
-        transform: translateY(150%)
-        .inner
-            display: inline-block
-            transition: transform 0.4s ease-in-out
-    .title.is-inview .let .inner
-        transform: translateY(-150%)
-    @for $i from 1 through 6
-        .let:nth-child(#{$i}) .inner
-            transition-delay: 0.4s + 0.1s * $i
-    @keyframes spin
-        0%
-            transform: rotate(0deg)
-        100%
-            transform: rotate(360deg)
-    .intro
-        position: absolute
-        top: 55vh
-        width: 30vw
-        left: 25vw
-        transform: translate(-50%)
-    .corner
+        top: 3em
+        right: 3em
+    &.fight h1
         position: absolute
         font-family: Michroma, Helvetica, sans-serif
-        color: #fff
-        font-size: 0.8rem
-        letter-spacing: 1px
-        &.left
-            left: 1rem
-        &.right
-            right: 1rem
-        &.top
-            top: 1rem
-        &.bottom
-            bottom: 1rem
-
-.slide2
-    position: relative
-    z-index: 2
-    width: 100vw
-    left: 100vw
-    & > .text-wrapper
-        width: 40vw
-        position: relative
-
-.container.ball
-    position: relative
-    z-index: 2
-    width: 100vw
-    .fight-or-flee
-        position: absolute
-        font-family: Michroma, Helvetica, sans-serif
-        margin-bottom: 0px
+        margin-bottom: 0
         margin-top: 5px
         text-align: left
         font-size: 130px
         line-height: 110px
         color: rgba(184, 54, 54, 0.527)
         text-transform: uppercase
+        transition: opacity 5s ease-in-out
         .line
             opacity: 0
             transform-origin: center top
@@ -234,19 +192,91 @@ nav
             @for $i from 1 through 6
                 &:nth-child(#{$i})
                     transition-delay: $i * .3s
+    &.fear
+        background-color: rgba(180,0,0,1)
+        padding: 3em
+        overflow: hidden
+        h1.blend
+            font-size: 7rem
+            color: rgba(114, 0, 0, 1)
+            margin: 0
+        .para
+            font-family: monospace
+            margin: 2em 0
+            max-width: 40em
+        .anim
+            position: absolute
+            mix-blend-mode: multiply
+            right: 20vw
+            top: 35vh
+    &.poems
+        display: flex
+        align-items: center
+        justify-content: center
+        .poem1
+            position: relative
+            width: 30vw
+            min-width: 45em
+            p:not(:first-child)
+                margin-top: 0.75rem
+        img
+            position: absolute
+            z-index: -1
+    &.box
+        canvas
+            position: absolute
+            transition: width 1.5s $cub-bez, height 1.5s $cub-bez, top 1.5s $cub-bez
+        .close-icon
+            width: 30px
+            height: 30px
+            position: absolute
+            top: 1em
+            right: 1em
+            box-shadow: none
+            opacity: 0
+            transition: opacity 500ms ease-out
+            cursor: pointer
+            &.active
+                opacity: 1
+    &.noise
+        padding: 15vmin
+        #noise
+            position: absolute
+            z-index: -1
+            top: 0
+            left: 0
+        *
+            max-width: 48em
+        h5
+            font-family: Migra
+            font-size: 2.5rem
+        p.light
+            margin-top: 2em
+        p.dark
+            margin-top: 2em
+            color: #fff
+
 
 .container.ghosts
     perspective: 500px
     perspective-origin: center center
-    height: 200vh
+    height: 250vh
     z-index: 3
     margin-top: -15vh
+    display: inline-flex !important
+    align-items: center
+    justify-content: center
     .ghost
         position: absolute
-        width: 270px
+        // widths are defined in-HTML to prevent race condition
+        //width: 270px
+        //&.prose
+        //    width: 400px
         &.sym
-            width: 180px
-            mix-blend-mode: difference
+            //width: 170px
+            img
+                pointer-events: none
+            //mix-blend-mode: difference
         height: auto
         top: 100vh
         left: 50vw
@@ -258,8 +288,10 @@ nav
             opacity: 1 !important
             .inner
                 border-color: #9451ff
-        .inner
+        &.sym .inner
             cursor: pointer
+        .inner
+            cursor: grab
             user-select: none
             width: 100%
             height: 100%
@@ -273,38 +305,8 @@ nav
                 background: black
                 font-family: monospace
                 line-height: 1.2rem
-    .prose
-        width: 400px
 
-.container.fear
-    position: relative
-    width: 100vw
-    background-color: rgba(180,0,0,0.85)
-    padding: 3em
-    overflow: hidden
-    h1.blend
-        font-size: 7rem
-        color: rgba(114, 0, 0, 1)
-        margin: 0
-    .para
-        font-family: monospace
-        margin: 2em 0
-        max-width: 40em
-    .anim
-        position: absolute
-        mix-blend-mode: multiply
-        right: 20vw
-        top: 35vh
-
-.container.ghosts
-    display: inline-flex !important
-    align-items: center
-    justify-content: center
 .container.ghosts .frame
-    width: 56vmin
-    height: 88vmin
-    padding: 44vmin 28vmin
-    //border: 15px solid rgb(20, 42, 150)
     .head-obj
         position: absolute
         top: calc(50% - 150px)
@@ -317,8 +319,6 @@ nav
         transition: transform 0.5s $cub-bez
         &:hover
             transform: rotate3d(10, 10, 1, 15deg)
-        img
-            mix-blend-mode: difference
         .symbol
             cursor: grab
             position: absolute
@@ -355,54 +355,6 @@ nav
                 width: 40vw
                 left: -20vw
 
-@keyframes upndown
-    0% 
-        top: 30vh
-    100%
-        top: 33vh
-
-.container.tunnel
-    position: relative
-    canvas
-        position: absolute
-        top: 10vh
-    .tunnel-wrapper
-        overflow: hidden
-        width: 100vw
-        height: 100vh
-        position: relative
-
-    img.tunnel    
-        height: 200px
-        position: absolute
-        top: 30vh
-        left: 40vw
-        animation-name: upndown
-        animation-duration: 3s
-        animation-iteration-count: infinite
-        animation-direction: alternate
-        transition: transform 2s ease-in-out
-        cursor: help
-    img.tunnel.clicked
-        transform: scale(1500%, 1500%)
-        transform-origin: 100px, 100px
-        cursor: auto
-
-.container.poems
-    position: relative
-    display: inline-flex !important
-    align-items: center
-    justify-content: center
-    .poem1
-        position: relative
-        width: 30vw
-        min-width: 45em
-        p:not(:first-child)
-            margin-top: 0.75rem
-    img
-        position: absolute
-        z-index: -1
-
 .container.deeper
     display: inline-flex !important
     align-items: center
@@ -421,25 +373,6 @@ nav
 
 .container.curses
     left: 50vw
-
-.container.box
-    left: 20vw
-    canvas
-        position: absolute
-        top: 10vh
-        transition: width 1.5s $cub-bez, height 1.5s $cub-bez, top 1.5s $cub-bez
-    .close-icon
-        width: 30px
-        height: 30px
-        position: absolute
-        top: 1em
-        right: 1em
-        box-shadow: none
-        opacity: 0
-        transition: opacity 500ms ease-out
-        cursor: pointer
-        &.active
-            opacity: 1
 
 .blend
     mix-blend-mode: difference

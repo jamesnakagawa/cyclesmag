@@ -14,7 +14,7 @@ export const initializeGhost = (ghost, start = true) => {
 
     let initBounds = () => {
         let xRange = window.innerWidth - bbox.width;
-        let yRange = window.innerHeight * 2 - bbox.height;
+        let yRange = window.innerHeight * 2.5 - bbox.height;
         Object.assign(bounds, {
             top: -yRange / 2,
             left: -xRange / 2,
@@ -86,15 +86,23 @@ export const initializeGhost = (ghost, start = true) => {
         stick = !stick;
     };
     let clickedFlag = false;
+    let moved = false;
     let mousedown = () => {
         clickedFlag = true;
     };
     let mouseup = () => {
         clickedFlag = false;
+        // if the user dragged it at all, reverse the click event.
+        if (moved) {
+            click();
+            mouseout();
+            moved = false;
+        }
     };
     let mousemove = e => {
         if (clickedFlag) {
-            setTransform(x += e.deltaX, y += e.deltaY, z);
+            setTransform(x += e.movementX, y += e.movementY, z);
+            moved = true
         }
     };
     ghostInner.addEventListener('mouseover', mouseover);
@@ -102,8 +110,8 @@ export const initializeGhost = (ghost, start = true) => {
     ghostInner.addEventListener('click', click);
     window.addEventListener('resize', initBounds);
     ghostInner.addEventListener('mousedown', mousedown);
-    ghostInner.addEventListener('mouseup', mouseup);
-    ghostInner.addEventListener('mousemove', mousemove);
+    document.addEventListener('mouseup', mouseup);
+    document.addEventListener('mousemove', mousemove);
 
     if (start === true) resume();
     return {pause, resume};

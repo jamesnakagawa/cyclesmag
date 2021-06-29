@@ -9,21 +9,9 @@
 </head>
 <body class='preload'>
 
-<nav>
-    <a href="#one">&bullet;</a>
-    <a href="#two">&bullet;</a>
-    <a href="#three">&bullet;</a>
-    <a href="#four">&bullet;</a>
-    <a href="#five">&bullet;</a>
-    <a href="#six">&bullet;</a>
-    <a href="#seven">&bullet;</a>
-    <a href="#eight">&bullet;</a>
-    <a href="#nine">&bullet;</a>
-</nav>
-
-<div class="horizontal-div" data-scroll-container data-horizontal="true">
-    <div class="container cycles" data-scroll-section>
-        <h1 class='title boxed bold' data-scroll data-scroll-repeat data-scroll-call="nav-1">
+<div class="horizontal-div">
+    <div class="container cycles">
+        <h1 class='title boxed bold'>
             <span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>Y</span></span><span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>L</span></span><span class='let'><span class='inner'>E</span></span><span class='let'><span class='inner'>S</span></span>
         </h1>
 
@@ -49,35 +37,14 @@
         </div>
     </div>
 
-<!--    <div class="container ball" data-scroll-section>-->
-<!--        <h1 class="fight-or-flee" data-scroll data-scroll-speed="5" data-scroll-call="nav-4" data-scroll-repeat>-->
-<!--            <div class='line'>Will you</div>-->
-<!--            <div class='line'>fight or</div>-->
-<!--            <div class='line'>flee from</div>-->
-<!--            <div class='line'>what you</div>-->
-<!--            <div class='line'>crave most?</div>-->
-<!--        </h1>-->
-<!--    </div>-->
-
-<!--    <div class='container fear' data-scroll-section>-->
-<!--        <h1 class="blend" data-scroll data-scroll-call="nav-6" data-scroll-repeat>FEAR.</h1>-->
-<!--        <div class="para">-->
-<!--            It isn't so much the presence of fear, as it is about its absence. You notice it - the peacefulness of a head void of anxieties. You start to wonder when it will be back, what you will do then.-->
-<!--        </div>-->
-<!--        <div class="para">-->
-<!--            I was pleasantly surprised by my lack of fear. It was like I could finally be myself, in all of myself, for us both to enjoy. But there were moments where our pasts caught up with us faster than we could catch our breaths from running away from everything else.-->
-<!--        </div>-->
-<!--        <div class="para">-->
-<!--            In those moments, I had never been so scared. Of losing you, losing myself in you, losing my sense of self in yours which seemed to always be fluctuating between cautious and critical to a fault. I never understood what you meant when you said you feared that you were unpredictable. I didn't fully understand what it meant for someone to be volatile. I too, was afraid of what it meant to be driven by fear. But, this wasn't about trust issues. Your emotions struck such fear because you couldn't control them. They controlled you.-->
-<!--        </div>-->
-
-<!--        <div data-scroll data-scroll-speed='8' class="anim">-->
-<!--            <canvas class="ball"></canvas>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <div class="container ghosts" data-scroll-section>
+    <div class="container ghosts">
         <div>
+            <style type="text/css">
+                /* defined here to guarantee they are loaded */
+                .ghost { width: 270px }
+                .ghost.prose { width: 400px }
+                .ghost.sym { width: 170px }
+            </style>
             <div class="ghost prose"><div class="inner text">I don’t know why i’ve been so jaded and hopeless when it comes to love or life when i’ve experienced unconditional love and someone pouring into me as much as i have poured into them. I live through pain and healing, and despite the challenges my cup runneth over. If it happened once it can happen again. If it hasn’t happened yet, doesn’t mean it won’t. Trust and faith are important.</div></div>
             <div class="ghost"><div class="inner text">Idk it just feels like I'm not moving in any direction</div></div>
             <div class="ghost"><div class="inner text">It's like I neither want to be here or there, I find myself wishing for people and places I haven't met yet - that don't exist</div></div>
@@ -90,12 +57,12 @@
             <div class="ghost prose"><div class="inner text">Love wasn't something I grew up expressing, processing, experiencing. For us, love was achievement, pride, over-protectiveness. Never just, 'love'.</p>
                 <p>I didn't hug my mom until I made a conscious effort to when I was in my 20s. Even now, our hugs are awkwardly timed, awkwardly held. The only times we say I love you are in the brief liminal spaces at the end of phone calls, right before you know to hang up, but right when you could add something more.</div></div>
             <div class="ghost"><div class="inner text">Ladies and Gentlemen we are floating in space</div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym1.svg"/></div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym2.svg"/></div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym3.svg"/></div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym4.svg"/></div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym5.svg"/></div></div>
-            <div class="ghost sym"><div class="inner"><img src="sym6.svg"/></div></div>
+            <div class="ghost sym show-fight"><div class="inner"><img src="sym1.svg"/></div></div>
+            <div class="ghost sym show-fear"><div class="inner"><img src="sym2.svg"/></div></div>
+            <div class="ghost sym show-poems"><div class="inner"><img src="sym3.svg"/></div></div>
+            <div class="ghost sym show-box"><div class="inner"><img src="sym4.svg"/></div></div>
+            <div class="ghost sym show-noise"><div class="inner"><img src="sym5.svg"/></div></div>
+<!--            <div class="ghost sym"><div class="inner"><img src="sym6.svg"/></div></div>-->
         </div>
 
         <div class="frame">
@@ -163,88 +130,103 @@
             <div class="head-obj"></div>
         </div>
     </div>
-    <div class="container tunnel" data-scroll-section>
-        <canvas class="head"></canvas>
-        <div class="tunnel-wrapper">
-            <img class="tunnel" src="tunnel.svg">
+
+<!--    <div class="container tunnel" data-scroll-section>-->
+<!--        <canvas class="head"></canvas>-->
+<!--        <div class="tunnel-wrapper">-->
+<!--            <img class="tunnel" src="tunnel.svg">-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div id="modal"></div>
+
+    <template id="container-fight">
+        <h1 class="fight-or-flee">
+            <div class='line'>Will you</div>
+            <div class='line'>fight or</div>
+            <div class='line'>flee from</div>
+            <div class='line'>what you</div>
+            <div class='line'>crave most?</div>
+        </h1>
+    </template>
+
+    <template id='container-fear'>
+        <h1 class="blend">FEAR.</h1>
+        <div class="para">
+            It isn't so much the presence of fear, as it is about its absence. You notice it - the peacefulness of a head void of anxieties. You start to wonder when it will be back, what you will do then.
         </div>
-    </div>
-<!--    <div class="container deeper" data-scroll-section>-->
-<!--        <div class="text-wrapper middle">-->
-<!--            <p>As we return again, to cycles, I feel myself weighing lonelier; I recognize less the things I want, those I need. What I think will make me happy is obscured by the chaotic nature of being stuck in the same patterns over and over again. What doesn't work continue to not work. I continue to lack agency, feel inadequate. I wonder when it will be my turn. When I will be free.</p>-->
-<!--        </div>-->
-<!--    </div>-->
+        <div class="para">
+            I was pleasantly surprised by my lack of fear. It was like I could finally be myself, in all of myself, for us both to enjoy. But there were moments where our pasts caught up with us faster than we could catch our breaths from running away from everything else.
+        </div>
+        <div class="para">
+            In those moments, I had never been so scared. Of losing you, losing myself in you, losing my sense of self in yours which seemed to always be fluctuating between cautious and critical to a fault. I never understood what you meant when you said you feared that you were unpredictable. I didn't fully understand what it meant for someone to be volatile. I too, was afraid of what it meant to be driven by fear. But, this wasn't about trust issues. Your emotions struck such fear because you couldn't control them. They controlled you.
+        </div>
 
-<!--    <div class="container poems" data-scroll-section>-->
-<!--        <div class="poem1 blue-box" data-scroll data-scroll-call="nav-8" data-scroll-repeat>-->
-<!--            <p>-->
-<!--            Like all things<br/>-->
-<!--            we have come full circle<br/>-->
-<!--            void of anger, sadness<br/>-->
-<!--            neither passive nor aggressive-->
-<!--            </p>-->
+        <div class="anim">
+            <canvas class="ball"></canvas>
+        </div>
 
-<!--            <p>-->
-<!--            We are a cool summer night after a heatwave<br/>-->
-<!--            still water after a storm<br/>-->
-<!--            the foliate debris left by Fall<br/>-->
-<!--            the small of rain after it pours-->
-<!--            </p>-->
+        <div class="close"><img src="/close.svg"/></div>
+    </template>
 
-<!--            <p>-->
-<!--            We are simply<br/>-->
-<!--            back to before<br/>-->
-<!--            cyclical as the seasons<br/>-->
-<!--            and it feels bittersweet<br/>-->
-<!--            that I've nearly forgotten what it was<br/>-->
-<!--            that had brought us together<br/>-->
-<!--            that what tore us apart<br/>-->
-<!--            is easier to remember<br/>-->
-<!--            than what started it all.-->
-<!--            </p>-->
+    <template id="container-poems">
+        <div class="poem1 blue-box">
+            <p>
+            Like all things<br/>
+            we have come full circle<br/>
+            void of anger, sadness<br/>
+            neither passive nor aggressive
+            </p>
 
-<!--            <p>&ndash; A.L.</p>-->
-<!--        </div>-->
-<!--        <img src="rainy.svg">-->
-<!--    </div>-->
+            <p>
+            We are a cool summer night after a heatwave<br/>
+            still water after a storm<br/>
+            the foliate debris left by Fall<br/>
+            the small of rain after it pours
+            </p>
+
+            <p>
+            We are simply<br/>
+            back to before<br/>
+            cyclical as the seasons<br/>
+            and it feels bittersweet<br/>
+            that I've nearly forgotten what it was<br/>
+            that had brought us together<br/>
+            that what tore us apart<br/>
+            is easier to remember<br/>
+            than what started it all.
+            </p>
+
+            <p>&ndash; A.L.</p>
+        </div>
+        <img src="rainy.svg">
+
+        <div class="close"><img src="/close-white.svg"/></div>
+    </template>
+
+    <template id="container-box">
+        <canvas class="box"></canvas>
+    </template>
+
+    <template id="container-noise">
+        <h5>On Breaking Generational Curses</h5>
+        <p class="light">Love wasn't something I grew up expressing, processing, experiencing. For us, love was achievement, pride, over-protectiveness. Never just, 'love'.</p>
+        <p class="dark">I didn't hug my mom until I made a conscious effort to when I was in my 20s. Even now, our hugs are awkwardly timed, awkwardly held. The only times we say I love you are in the brief liminal spaces at the end of phone calls, right before you know to hang up, but right when you could add something more.</p>
+        <div id="noise"></div>
+        <div class="close"><img src="/close-white.svg"/></div>
+    </template>
+
+    <!--    <div class="container deeper" data-scroll-section>-->
+    <!--        <div class="text-wrapper middle">-->
+    <!--            <p>As we return again, to cycles, I feel myself weighing lonelier; I recognize less the things I want, those I need. What I think will make me happy is obscured by the chaotic nature of being stuck in the same patterns over and over again. What doesn't work continue to not work. I continue to lack agency, feel inadequate. I wonder when it will be my turn. When I will be free.</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
 <!--    <div class="container crutches" data-scroll-section>-->
 <!--        <div class="text-wrapper middle">-->
 <!--            <p>I find myself reaching for the same crutches. Coping mechanisms that are more comfortable than they are effective. But again, I never seem to exit the pattern. Instead, I dissolve further. Deeper.</p>-->
 <!--        </div>-->
 <!--    </div>-->
-
-<!--    <div class="container curses" data-scroll-section>-->
-<!--        <div class="dark-panel">-->
-<!--            <h5>On Breaking Generational Curses</h5>-->
-<!--            <p class="light">Love wasn't something I grew up expressing, processing, experiencing. For us, love was achievement, pride, over-protectiveness. Never just, 'love'.</p>-->
-<!--            <p>I didn't hug my mom until I made a conscious effort to when I was in my 20s. Even now, our hugs are awkwardly timed, awkwardly held. The only times we say I love you are in the brief liminal spaces at the end of phone calls, right before you know to hang up, but right when you could add something more.</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="container box" data-scroll-section>-->
-<!--        <div data-scroll data-scroll-call="nav-9" data-scroll-repeat>&nbsp;</div>-->
-<!--        <canvas class="box"></canvas>-->
-<!--    </div>-->
-
-
-<!--    <div class="container cycles2" data-scroll-section>-->
-<!--        <h1 class='title boxed bold' data-scroll data-scroll-repeat data-scroll-call="nav-1">-->
-<!--            <span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>Y</span></span><span class='let'><span class='inner'>C</span></span><span class='let'><span class='inner'>L</span></span><span class='let'><span class='inner'>E</span></span><span class='let'><span class='inner'>S</span></span>-->
-<!--        </h1>-->
-
-<!--        <div class="text-wrapper intro boxed">-->
-<!--            <p>A <b>Cycle</b> is a succession through the dips, peaks, and valleys of the universe within and around us, knowing that we will return home once again.</p>-->
-<!--        </div>-->
-
-<!--        <div class="corner top right">-->
-<!--            THE END-->
-<!--        </div>-->
-<!--        <div class="corner bottom right">-->
-<!--            AL / JN-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="background-inverter">&nbsp;</div>-->
 
 </div>
 

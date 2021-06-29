@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-// import initOrbit from 'three-orbit-controls';
+import initOrbit from 'three-orbit-controls';
 
-// let OrbitControls = initOrbit(THREE);
+let OrbitControls = initOrbit(THREE);
 
 export function makeRectangle() {
     //use texture loaders to create asset based things
@@ -32,18 +32,12 @@ export function makeRectangle() {
 
     const geometry = new THREE.BoxGeometry( 2, 3, 2 );
 
-    // const material = new THREE.MeshBasicMaterial({ 
-    //     map: frontMaterial,
-    //     side: THREE.FrontSide
-    // });
-
     return new THREE.Mesh(geometry, materials);
 }
 
 const defaultOpts = {
     width: window.innerWidth,
     height: window.innerHeight,
-    scroll: {scrollTo() {}}
 };
 
 export function drawCube(selector, options = defaultOpts) {
@@ -96,43 +90,6 @@ export function drawCube(selector, options = defaultOpts) {
 
     scene.add(pointLight2)
 
-    //const light1 = gui.addFolder('Light 1')
-
-    // light1.add(pointLight2.position, 'x').min(-3).max(3).step(0.01)
-    // light1.add(pointLight2.position, 'y').min(-3).max(3).step(0.01)
-    // light1.add(pointLight2.position, 'z').min(-3).max(3).step(0.01)
-    // light1.add(pointLight2, 'intensity').min(0).max(10).step(0.01)
-
-    // const pointLightHelper = new THREE.PointLightHelper(pointLight2, 0.6)
-    // scene.add(pointLightHelper)
-
-    //light 3
-
-    // const pointLight3 = new THREE.PointLight(0xff0000, 0.1)
-    // pointLight3.position.set(3,3,3)
-    // pointLight3.intensity = 1
-
-    // scene.add(pointLight3)
-
-    // const light2 = gui.addFolder('Light 2')
-
-    // light2.add(pointLight3.position, 'x').min(-3).max(3).step(0.01)
-    // light2.add(pointLight3.position, 'y').min(-3).max(3).step(0.01)
-    // light2.add(pointLight3.position, 'z').min(-3).max(3).step(0.01)
-    // light2.add(pointLight3, 'intensity').min(0).max(10).step(0.01)
-
-    const light2Color = {
-        color:0xff0000
-     }
-
-    // light2.addColor(light2Color, 'color')
-    //     .onChange(() => {
-    //         pointLight3.color.set(light2Color.color)
-    //     })
-
-    // const pointLightHelper2 = new THREE.PointLightHelper(pointLight3, 0.6)
-    // scene.add(pointLightHelper2)
-
     /**
      * Sizes
      */
@@ -169,8 +126,8 @@ export function drawCube(selector, options = defaultOpts) {
     scene.add(camera)
 
     // Controls
-    // const controls = new OrbitControls(camera, canvas)
-    // controls.enableDamping = true
+    const controls = new OrbitControls(camera, canvas)
+    controls.enableDamping = true
 
     /**
      * Renderer
@@ -211,8 +168,6 @@ export function drawCube(selector, options = defaultOpts) {
         window.removeEventListener('resize', boundResize);
         window.addEventListener('resize', boundFullscreen);
 
-        options.scroll.scrollTo(canvas);
-
         canvas.style.top = 0;
 
         let close = document.createElement('img');
@@ -223,7 +178,6 @@ export function drawCube(selector, options = defaultOpts) {
             resize(sizes);
             window.removeEventListener('resize', boundFullscreen);
             window.addEventListener('resize', boundResize);
-            canvas.style.top = '10vh';
             close.remove();
         });
         canvas.parentElement.append(close);
@@ -261,7 +215,7 @@ export function drawCube(selector, options = defaultOpts) {
         camera.updateProjectionMatrix();
 
         // Update Orbital Controls
-        // controls.update()
+        controls.update()
 
         // Render
         renderer.render(scene, camera)

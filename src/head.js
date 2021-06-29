@@ -18,7 +18,6 @@ export function drawHead(selector, width, height) {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
-    controls.enableZoom = true;
     controls.rotateSpeed = 0.1;
 
     const keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);

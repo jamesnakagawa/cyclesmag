@@ -361,14 +361,14 @@ OBJLoader.prototype = {
 			// Skip o/g line declarations that did not follow with any faces
 			if (geometry.vertices.length === 0) continue;
 			var buffergeometry = new THREE.BufferGeometry();
-			buffergeometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(geometry.vertices), 3));
+			buffergeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(geometry.vertices), 3));
 			if (geometry.normals.length > 0) {
-				buffergeometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(geometry.normals), 3));
+				buffergeometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(geometry.normals), 3));
 			} else {
 				buffergeometry.computeVertexNormals();
 			}
 			if (geometry.uvs.length > 0) {
-				buffergeometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(geometry.uvs), 2));
+				buffergeometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(geometry.uvs), 2));
 			}
 			// Create materials
 			var createdMaterials = [];
