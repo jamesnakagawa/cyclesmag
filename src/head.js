@@ -34,7 +34,6 @@ export function drawHead(selector, width, height) {
     let targetRotation = rotation1;
 
     const objLoader = new OBJLoader();
-    objLoader.setPath('/');
     let head;
     objLoader.load('head.obj', object => {
         head = object;
